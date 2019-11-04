@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import disk_models as dm
 import disk_data_analysis.circumbinary as dda
 import sys
+import os
 
 '''
 Script to setup a steadily accreting circumbinary disk
@@ -120,7 +121,7 @@ if __name__=="__main__":
     # Write files
     s.write_snapshot(d,mesh,filename='disk_qb%.2f_eb%.2f_alpha%.2f_h%.2f.hdf5' % (qb,eb,alpha,h0),
                      relax_density_in_input = True)
-    s.params.read('param_example.txt')
+    s.params.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), 'param_example.txt'))
     s.params.reference_gas_part_mass= np.around(0.007 * sigma0 * 4*np.pi**2 * 1**2/Nphi1**2,decimals=6)
     s.params.min_volume = np.around(0.008 * np.pi * float(s.params.circumstellar_sink_radius)**2,decimals=8)
     s.params.max_volume = 20 * np.around(5*np.pi**2 * 1**2/Nphi1**2,decimals=6)
