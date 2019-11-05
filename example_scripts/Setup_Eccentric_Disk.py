@@ -2,7 +2,6 @@ from __future__ import division
 import matplotlib.pyplot as plt
 import numpy as np; import h5py
 import disk_data_analysis as da
-import disk_make_ecc as dme
 import os
 
 ## Filenames ##
@@ -27,6 +26,7 @@ def a_from_r_v(pos, vel):
     return (2 / r1 - v2)**(-1)
 
 ## Eccentricify ##
+import disk_models.disk_make_ecc as dme
 outp = dme.make_disk_eccentric(name, e_profile, w_profile)
 
 ## Look at New Disk ##
