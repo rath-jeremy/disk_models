@@ -7,7 +7,7 @@ import os
 ## Filenames ##
 #name = "disk_qb1.00_eb0.10_alpha0.01_h0.10.hdf5"
 #name = "disk_qb0.00_eb0.10_alpha0.01_h0.10.hdf5"
-name = "disk_qb0.00_eb0.00_alpha0.01_h0.01.hdf5"
+name = "disk_qb0.00_eb0.00_alpha0.10_h0.01.hdf5"
 
 ## Use Absolute Path ##
 name = os.path.join(os.path.abspath(os.path.dirname(__file__)), name)
@@ -21,9 +21,9 @@ def w_profile(r):
     return np.pi / 2 * r/r
 
 def a_from_r_v(pos, vel):
-    r1 = np.sqrt(pos[:, 0]**2 + pos[:, 1]**2 + pos[:, 2]**2)
+    r2 = pos[:, 0]**2 + pos[:, 1]**2 + pos[:, 2]**2
     v2 = vel[:, 0]**2 + vel[:, 1]**2 + vel[:, 2]**2
-    return (2 / r1 - v2)**(-1)
+    return (2 / np.sqrt(r2) - v2)**(-1)
 
 ## Eccentricify ##
 import disk_models.disk_make_ecc as dme
